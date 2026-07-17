@@ -53,35 +53,34 @@ Output: -1
 class Solution {
 public:
     int search(vector<int>& arr, int target) {
-        int s = 0, e = arr.size()-1;
+        int s = 0,e = arr.size()-1;
         while(s<=e){
-            int mid = s + (e-s)/2;
+            int mid  = s + (e-s)/2;
             if(arr[mid] == target){
                 return mid;
             }
-            else if(arr[mid] <arr[e]){
-                if(arr[mid]<target && arr[e] >=target){
-                    s = mid+1;
+            else  if(arr[s]<=arr[mid]){
+                if(arr[s]<=target && arr[mid]>target){
+                    e = mid -1;
                 }
                 else{
-                    e = mid-1;
+                    s = mid+1;
                 }
             }
             else{
-                if(arr[mid]>target && arr[s]<=target){
-                    e = mid-1;
+                if(target > arr[mid] && target<=arr[e]){
+                    s = mid+1;
                 }
                 else{
-                    s = mid+1;
+                     e = mid -1;
                 }
             }
         }
         return -1;
-
         
     }
 };
 ```
 
 ---
-*Solved on 2026-07-16*
+*Solved on 2026-07-17*
